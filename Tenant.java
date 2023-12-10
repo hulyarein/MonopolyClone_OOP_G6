@@ -14,4 +14,6 @@ public class Tenant extends Player {
             // Implement additional logic here, e.g., bankrupt the player
         }
     }
+
+
 }

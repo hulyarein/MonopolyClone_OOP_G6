@@ -3,11 +3,13 @@ public class Player {
     private int position;
     private int money;
     private boolean inJail;
+    private boolean hasGetOutOfJailFreeCard;
     public Player(String name) {
         this.name = name;
         this.position = 0; // Starting position on the board
         this.money = 1500; // Starting money
         this.inJail = false;
+        this.hasGetOutOfJailFreeCard = false;
     }
 
     public void move(int steps) {
@@ -72,5 +74,24 @@ public class Player {
         money += amount;
         System.out.println(name + " received $" + amount + ". Current balance: $" + money);
     }
+
+    public void payRent(int amount) {
+        this.money -= amount;
+    }
+
+    public void sendToJail(Player player) {
+        player.setPosition(11);
+        player.setInJail(true);
+        System.out.println(player.getName() + " is in jail!");
+    }
+
+    public void receiveGetOutOfJailFreeCard() {
+        this.hasGetOutOfJailFreeCard = true;
+    }
+
+    public boolean hasGetOutOfJailFreeCard() {
+        return this.hasGetOutOfJailFreeCard;
+    }
+
 }
 
