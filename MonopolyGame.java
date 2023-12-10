@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class MonopolyGame extends JFrame {
 
-    private JPanel panel1;
-
     public static void main(String[] args) {
         // Create players and board spaces
         Player player1 = new Player("Player 1");
@@ -12,30 +10,6 @@ public class MonopolyGame extends JFrame {
 
         StreetProperty mediterraneanAve = new StreetProperty("Mediterranean Avenue", 60, "Brown");
         StreetProperty balticAve = new StreetProperty("Baltic Avenue", 60, "Brown");
-        StreetProperty orientalAve = new StreetProperty("Oriental Avenue", 100, "LightBlue");
-        StreetProperty vermontAve = new StreetProperty("Vermont Avenue", 100, "LightBlue");
-        StreetProperty connecticutAve = new StreetProperty("Connecticut Avenue", 100, "LightBlue");
-        StreetProperty STcharlesPlace = new StreetProperty("St. Charles Place", 140, "Pink");
-        StreetProperty statesAve = new StreetProperty("States Avenue", 140, "Pink");
-        StreetProperty virginiaAve = new StreetProperty("Virginia Avenue", 160, "Pink");
-        StreetProperty STjamesPlace = new StreetProperty("St. James Place", 140, "Orange");
-        StreetProperty tennesseeAve = new StreetProperty("Tennessee Avenue", 180, "Orange");
-        StreetProperty newyorkAve = new StreetProperty("New York Avenue", 200, "Orange");
-        StreetProperty kentuckyAve = new StreetProperty("Kentucky Avenue", 220, "Red");
-        StreetProperty indianaAve = new StreetProperty("Indiana Avenue", 220, "Red");
-        StreetProperty illinoisAve = new StreetProperty("Illinois Avenue", 240, "Red");
-        StreetProperty atlanticAve = new StreetProperty("Atlantic Avenue", 260, "Yellow");
-        StreetProperty ventnorAve = new StreetProperty("Ventnor Avenue", 260, "Yellow");
-        StreetProperty marvinGardens = new StreetProperty("Marvin Gardens", 280, "Yellow");
-        StreetProperty pacificAve = new StreetProperty("Pacific Avenue", 300, "Green");
-        StreetProperty northcarolinaAve = new StreetProperty("North Carolina Avenue", 300, "Green");
-        StreetProperty pennsylvaniaAve = new StreetProperty("Pennsylvania Avenue", 320, "Green");
-        StreetProperty parkPlace = new StreetProperty("Park Place", 350, "Blue");
-        StreetProperty boardWalk = new StreetProperty("Board Walk", 400, "Blue");
-
-
-
-        // added some streetproperty - zed
         // ... Create other street properties, utilities, railroads, and other spaces
 
         Jail jail = new Jail();
