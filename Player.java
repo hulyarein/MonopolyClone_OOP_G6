@@ -5,7 +5,7 @@ public class Player {
     private boolean inJail;
     public Player(String name) {
         this.name = name;
-        this.position = 0; // Starting position on the board
+        this.position = 1; // Starting position on the board
         this.money = 1500; // Starting money
         this.inJail = false;
     }
