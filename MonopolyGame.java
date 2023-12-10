@@ -1,6 +1,9 @@
+import javax.swing.*;
 import java.util.Scanner;
 
-public class MonopolyGame {
+public class MonopolyGame extends JFrame {
+
+    private JPanel panel1;
 
     public static void main(String[] args) {
         // Create players and board spaces
