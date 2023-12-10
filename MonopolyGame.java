@@ -223,13 +223,7 @@ public class MonopolyGame extends JFrame {
                 gameIsRunning = false;
             }
         }
-        MonopolyGame m = new MonopolyGame();
 
-
-        m.setSize(1080,1024);
-        m.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        m.setTitle("Monopoly");
-        m.setVisible(true);
 
         // Close the scanner
         scanner.close();
