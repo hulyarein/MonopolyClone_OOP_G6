@@ -31,12 +31,6 @@ public class MonopolyGame extends JFrame {
         StreetProperty parkPlace = new StreetProperty("Park Place", 350, "Blue");
         StreetProperty boardWalk = new StreetProperty("Board Walk", 400, "Blue");
 
-
-
-// added some streetproperty - zed
-
-        // ... Create other street properties, utilities, railroads, and other spaces
-
         Jail jail = new Jail();
         FreeParking freeParking = new FreeParking();
 
@@ -65,37 +59,148 @@ public class MonopolyGame extends JFrame {
 
             // Handle board spaces based on player position
             switch (currentPlayer.getPosition() % 40) {
-                case 1: // Go, Collect Salary
-                    // Already handled when passing Go
-                    break;
+//                case 1: // Go, Collect Salary
+//                    // Already handled when passing Go
+//                    break;
                 case 2: // Mediterranean Avenue
-                    // Implement logic for Mediterranean Avenue
+                    try{
+                        Handle.handleStreetProperty(currentPlayer, mediterraneanAve);
+                    } catch(Exception e) {
+                        System.out.println("Exception occurred on Mediterranean Avenue: " + e.getMessage());
+                    }
+
                     break;
                 case 3: // Community Chest
-                    // Implement logic for Community Chest
+                    CommunityChestCard communityChestCard = new CommunityChestCard("Community Chest Card Description"); // add desc here
+                    communityChestCard.executeAction(currentPlayer);
                     break;
                 case 4: // Baltic Avenue
-                    // Implement logic for Baltic Avenue
+                    Handle.handleStreetProperty(currentPlayer, balticAve);
                     break;
-                // ... Repeat for other board spaces
-
+                case 5: // Income Tax
+                    IncomeTax incomeTax = new IncomeTax("Income Tax", 200);
+                    incomeTax.collectIncomeTax(currentPlayer);
+                    break;
+                case 6: // Reading Railroad
+                    Handle.handleRailroadProperty(currentPlayer, "Reading Railroad", 200);
+                    break;
+                case 7: // Oriental Avenue
+                    Handle.handleStreetProperty(currentPlayer, orientalAve);
+                    break;
+                case 8: // Chance
+                    ChanceCard chanceCard = new ChanceCard("Chance Card Description"); // Add pata desc here
+                    chanceCard.executeAction(currentPlayer);
+                    break;
+                case 9: // Vermont Avenue
+                    Handle.handleStreetProperty(currentPlayer, vermontAve);
+                    break;
+                case 10: // Connecticut Avenue
+                    Handle.handleStreetProperty(currentPlayer, connecticutAve);
+                    break;
                 case 11: // Just Visiting/In Jail
-                    // Implement logic for Jail
+                    if (!jail.isPlayerInJail(currentPlayer)) {
+                        System.out.println(currentPlayer.getName() + " is just visiting Jail.");
+                    } else {
+                        System.out.println(currentPlayer.getName() + " is in Jail. Pay $50 to get out or roll doubles on your next turn.");
+                        // Implement additional logic for handling Jail, e.g., paying to get out or rolling doubles
+                    }
                     break;
-                // ... Repeat for other board spaces
+                case 12: // St. Charles Place
+                    Handle.handleStreetProperty(currentPlayer, STcharlesPlace);
+                    break;
+                case 13: // Electric Company
+                    Handle.handleUtilityProperty(currentPlayer, "Electric Company", 150);
+                    break;
 
+                case 14: // States Avenue
+                    Handle.handleStreetProperty(currentPlayer, statesAve);
+                    break;
+                case 15: // Virginia Avenue
+                    Handle.handleStreetProperty(currentPlayer, virginiaAve);
+                    break;
+                case 16: // Pennsylvania Railroad
+                    Handle.handleRailroadProperty(currentPlayer, "Pennsylvania Railroad", 200);
+                    break;
+                case 17: // St. James Place
+                    Handle.handleStreetProperty(currentPlayer, STjamesPlace);
+                    break;
+                case 18: // Community Chest
+                    CommunityChestCard communityChestCard2 = new CommunityChestCard("Community Chest Card Description"); // Add pata desc here
+                    communityChestCard2.executeAction(currentPlayer);
+                    break;
+                case 19: // Tennessee Avenue
+                    Handle.handleStreetProperty(currentPlayer, tennesseeAve);
+                    break;
+                case 20: // New York Avenue
+                    Handle.handleStreetProperty(currentPlayer, newyorkAve);
+                    break;
                 case 21: // Free Parking
-                    // Implement logic for Free Parking
+                    freeParking.handleFreeParking(currentPlayer);
                     break;
-                // ... Repeat for other board spaces
-
+                case 22: // Kentucky Avenue
+                    Handle.handleStreetProperty(currentPlayer, kentuckyAve);
+                    break;
+                case 23: // Chance
+                    ChanceCard chanceCard2 = new ChanceCard("Chance Card Description"); // Add pata desc here
+                    chanceCard2.executeAction(currentPlayer);
+                    break;
+                case 24: // Indiana Avenue
+                    Handle.handleStreetProperty(currentPlayer, indianaAve);
+                    break;
+                case 25: // Illinois Avenue
+                    Handle.handleStreetProperty(currentPlayer, illinoisAve);
+                    break;
+                case 26: // B. & O. Railroad
+                    Handle.handleRailroadProperty(currentPlayer, "B. & O. Railroad", 200);
+                    break;
+                case 27: // Atlantic Avenue
+                    Handle.handleStreetProperty(currentPlayer, atlanticAve);
+                    break;
+                case 28: // Ventnor Avenue
+                    Handle.handleStreetProperty(currentPlayer, ventnorAve);
+                    break;
+                case 29: // Water Works
+                    Handle.handleUtilityProperty(currentPlayer, "Water Works", 150);
+                    break;
+                case 30: // Marvin Gardens
+                    Handle.handleStreetProperty(currentPlayer, marvinGardens);
+                    break;
                 case 31: // Go to Jail
-                    // Implement logic for Go to Jail
                     jail.sendToJail(currentPlayer);
                     break;
-                // ... Repeat for other board spaces
+                case 32: // Pacific Avenue
+                    Handle.handleStreetProperty(currentPlayer, pacificAve);
+                    break;
+                case 33: // North Carolina Avenue
+                    Handle.handleStreetProperty(currentPlayer, northcarolinaAve);
+                    break;
+                case 34: // Community Chest
+                    CommunityChestCard communityChestCard3 = new CommunityChestCard("Community Chest Card Description"); // Add pata desc here
+                    communityChestCard3.executeAction(currentPlayer);
+                    break;
+                case 35: // Pennsylvania Avenue
+                    Handle.handleStreetProperty(currentPlayer, pennsylvaniaAve);
+                    break;
+                case 36: // Short Line
+                    Handle.handleRailroadProperty(currentPlayer, "Short Line", 200);
+                    break;
+                case 37: // Chance
+                    ChanceCard chanceCard3 = new ChanceCard("Chance Card Description"); // Add pata desc here
+                    chanceCard3.executeAction(currentPlayer);
+                    break;
+                case 38: // Park Place
+                    Handle.handleStreetProperty(currentPlayer, parkPlace);
+                    break;
+                case 39: // Luxury Tax
+                    LuxuryTax luxuryTax = new LuxuryTax("Luxury Tax", 100);
+                    luxuryTax.collectLuxuryTax(currentPlayer);
+                    break;
+                /*case 40: // Boardwalk
+                    Handle.handleStreetProperty(currentPlayer, boardWalk);
+                    break;*/
 
-                // ... Repeat for other board spaces
+                default:
+                    throw new IllegalStateException("Unexpected value: " + currentPlayer.getPosition() % 40);
             }
 
             // Check if a player is bankrupt
@@ -114,6 +219,13 @@ public class MonopolyGame extends JFrame {
                 gameIsRunning = false;
             }
         }
+        MonopolyGame m = new MonopolyGame();
+
+
+        m.setSize(1080,1024);
+        m.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        m.setTitle("Monopoly");
+        m.setVisible(true);
 
         // Close the scanner
         scanner.close();
