@@ -9,6 +9,7 @@ public class MonopolyGame {
 
         StreetProperty mediterraneanAve = new StreetProperty("Mediterranean Avenue", 60, "Brown");
         StreetProperty balticAve = new StreetProperty("Baltic Avenue", 60, "Brown");
+        // ZED GWAPO
         // ... Create other street properties, utilities, railroads, and other spaces
 
         Jail jail = new Jail();
