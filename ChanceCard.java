@@ -26,7 +26,7 @@ public class ChanceCard extends Card {
                 getOutOfJailFreeCard(player);
                 break;
             case 5:
-                // repairProperties(player);
+                repairProperties(player);
                 break;
             // Add more cases for other actions
         }
@@ -70,7 +70,7 @@ public class ChanceCard extends Card {
         return random.nextInt(6) + 1;
     }
 
-    /*private void repairProperties(Player player){
+    private void repairProperties(Player player){
        // int houseCount = player.gett;
-    }*/
+    }
 }

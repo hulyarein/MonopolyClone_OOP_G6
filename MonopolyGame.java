@@ -68,7 +68,6 @@ public class MonopolyGame extends JFrame {
                     } catch(Exception e) {
                         System.out.println("Exception occurred on Mediterranean Avenue: " + e.getMessage());
                     }
-
                     break;
                 case 3: // Community Chest
                     CommunityChestCard communityChestCard = new CommunityChestCard("Community Chest Card Description"); // add desc here
@@ -111,7 +110,6 @@ public class MonopolyGame extends JFrame {
                 case 13: // Electric Company
                     Handle.handleUtilityProperty(currentPlayer, "Electric Company", 150);
                     break;
-
                 case 14: // States Avenue
                     Handle.handleStreetProperty(currentPlayer, statesAve);
                     break;
@@ -195,12 +193,18 @@ public class MonopolyGame extends JFrame {
                     LuxuryTax luxuryTax = new LuxuryTax("Luxury Tax", 100);
                     luxuryTax.collectLuxuryTax(currentPlayer);
                     break;
-                /*case 40: // Boardwalk
+                case 40: // Boardwalk
                     Handle.handleStreetProperty(currentPlayer, boardWalk);
-                    break;*/
-
+                    break;
+            // CASE 40 IS UNREACHABLE == ILISAN UG "case 0:" NEED FIX!
+//                currentPlayer.getPosition() % 40 range from 0 to 39, not including 40. Therefore,
+//                    the case 40: is unreachable because the maximum value it can take is 39.
+//                To fix this issue, you can remove the case 40: and handle the case when
+//                        currentPlayer.getPosition() % 40 is 0 separately.
                 default:
-                    throw new IllegalStateException("Unexpected value: " + currentPlayer.getPosition() % 40);
+                    // throw new IllegalStateException("Unexpected value: " + currentPlayer.getPosition() % 40);
+                    System.err.println("Unexpected value: " + currentPlayer.getPosition() % 40);
+                    break;
             }
 
             // Check if a player is bankrupt
