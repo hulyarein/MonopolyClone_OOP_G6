@@ -7,7 +7,7 @@ public class ChanceCard extends Card {
     public void executeAction(Player player) {
 
         Random random = new Random();
-        int actionType = random.nextInt(2);
+        int actionType = random.nextInt(10);
 
         switch (actionType) {
             case 0:
@@ -15,6 +15,18 @@ public class ChanceCard extends Card {
                 break;
             case 1:
                 movePlayer(player);
+                break;
+            case 2:
+                payRent(player);
+                break;
+            case 3:
+                goToJail(player);
+                break;
+            case 4:
+                getOutOfJailFreeCard(player);
+                break;
+            case 5:
+                // repairProperties(player);
                 break;
             // Add more cases for other actions
         }
@@ -32,6 +44,22 @@ public class ChanceCard extends Card {
         System.out.println(player.getName() + " moved " + steps + " steps from Chance.");
     }
 
+    private void payRent(Player player){
+        int amount = generateRandomAmount();
+        player.payRent(amount);
+        System.out.println(player.getName() + " paid $" + amount + " in rent from Chance.");
+    }
+
+    private void goToJail(Player player){
+        player.setInJail(player.isInJail());
+        System.out.println(player.getName() + " goes to jail from Chance");
+        player.sendToJail(player);
+    }
+    private void getOutOfJailFreeCard(Player player){
+        player.receiveGetOutOfJailFreeCard();
+        System.out.println(player.getName() + " received a 'Get Out of Jail Free' card from Chance.");
+    }
+
     private int generateRandomAmount() {
         Random random = new Random();
         return random.nextInt(151) + 50;
@@ -41,4 +69,8 @@ public class ChanceCard extends Card {
         Random random = new Random();
         return random.nextInt(6) + 1;
     }
+
+    /*private void repairProperties(Player player){
+       // int houseCount = player.gett;
+    }*/
 }
