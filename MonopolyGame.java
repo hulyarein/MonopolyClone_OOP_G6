@@ -193,7 +193,7 @@ public class MonopolyGame extends JFrame {
                     LuxuryTax luxuryTax = new LuxuryTax("Luxury Tax", 100);
                     luxuryTax.collectLuxuryTax(currentPlayer);
                     break;
-                case 40: // Boardwalk
+                case 40: // Boardwalk //
                     Handle.handleStreetProperty(currentPlayer, boardWalk);
                     break;
             // CASE 40 IS UNREACHABLE == ILISAN UG "case 0:" NEED FIX!
