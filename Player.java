@@ -2,11 +2,12 @@ public class Player {
     private String name;
     private int position;
     private int money;
-
+    private boolean inJail;
     public Player(String name) {
         this.name = name;
         this.position = 0; // Starting position on the board
         this.money = 1500; // Starting money
+        this.inJail = false;
     }
 
     public void move(int steps) {
@@ -60,6 +61,16 @@ public class Player {
     public void receiveMoney(int amount) {
         money += amount;
         System.out.println(name + " received $" + amount);
+    }
+    public boolean isInJail() {
+        return inJail;
+    }
+    public void setInJail(boolean inJail) {
+        this.inJail = inJail;
+    }
+    public void addToMoney(int amount) {
+        money += amount;
+        System.out.println(name + " received $" + amount + ". Current balance: $" + money);
     }
 }
 

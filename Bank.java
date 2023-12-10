@@ -12,9 +12,12 @@ public class Bank {
             System.out.println(sender.getName() + " paid $" + amount + " to " + receiver.getName());
         } else {
             System.out.println(sender.getName() + " does not have enough money to make the transfer.");
+            bankruptPlayer(sender);
             // Implement additional logic, e.g., bankrupt the player
         }
     }
 
-    // Other methods for managing bank transactions, properties, etc.
+    private void bankruptPlayer(Player player) {
+        System.out.println(player.getName() + " is bankrupt!");
+    }
 }
