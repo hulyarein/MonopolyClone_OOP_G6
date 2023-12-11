@@ -1,44 +1,95 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 public class MonopolyGame extends JFrame {
     private JPanel mainPanel;
     private JLabel backgroundImageLabel;
+    private JTextField displayText;
+    private JTextField displayProp;
+    private JButton btnBuy;
+    private JButton btnPayRent;
+    private JButton btnRoll;
+    private JButton btnNext;
+
+    public void updateDisplayText(String text) {
+        displayText.setText(text);
+    }
 
     public static void main(String[] args) {
         MonopolyGame frame = new MonopolyGame();
         // Set up the main frame
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setContentPane(frame.mainPanel);
-        frame.setSize(1440, 1080);
+        frame.setSize(1280, 900);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
         // Initialize game variables and start the game
-        startGame();
+        frame.startGame();
     }
     public MonopolyGame() {
         // Load the background image
         ImageIcon backgroundImageIcon = new ImageIcon("monopoly_original.jpg");
-        Image backgroundImage = backgroundImageIcon.getImage().getScaledInstance(1440, 900, Image.SCALE_DEFAULT);
+        Image backgroundImage = backgroundImageIcon.getImage().getScaledInstance(1280, 900, Image.SCALE_DEFAULT);
         backgroundImageIcon = new ImageIcon(backgroundImage);
 
         // Set up the layout
-        GroupLayout layout = new GroupLayout(mainPanel);
-        mainPanel.setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(backgroundImageLabel, GroupLayout.DEFAULT_SIZE, 1440, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(backgroundImageLabel, GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
-        );
+//        GroupLayout layout = new GroupLayout(mainPanel);
+//        mainPanel.setLayout(layout);
+
+//        layout.setHorizontalGroup(
+//                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//                        .addGroup(layout.createSequentialGroup()
+//                                .addComponent(backgroundImageLabel, GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
+//                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+//                                .addComponent(displayText, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+//                        )
+//        );
+//
+//        layout.setVerticalGroup(
+//                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//                        .addComponent(backgroundImageLabel, GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+//                        .addComponent(displayText, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+//        );
+
+        // Set the preferred size of the main panel
+        mainPanel.setPreferredSize(new Dimension(1280, 900));
+
+        // Set the preferred size of the displayText field
+        displayText.setPreferredSize(new Dimension(100, 150));
+        displayProp.setPreferredSize(new Dimension(100, 300));
+        btnRoll.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // implement logic
+            }
+        });
+        btnNext.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // implement logic
+            }
+        });
+        btnPayRent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // implement logic
+            }
+        });
+        btnBuy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // implement logic
+            }
+        });
     }
 
-    private static void startGame() {
+
+    private void startGame() {
         // Create players and board spaces
         Player player1 = new Player("Player 1");
         Player player2 = new Player("Player 2");
@@ -252,7 +303,9 @@ public class MonopolyGame extends JFrame {
             currentPlayerIndex = (currentPlayerIndex + 1) % 2;
 
             // Ask for user input to continue the game
-            System.out.println("Press Enter to continue or type 'quit' to end the game:");
+            String gameInfo = "Press Enter to continue or type 'quit' to end the game:";
+            System.out.println(gameInfo);
+            updateDisplayText(gameInfo);
             String input = scanner.nextLine().toLowerCase();
             if (input.equals("quit")) {
                 gameIsRunning = false;
