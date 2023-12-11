@@ -13,6 +13,7 @@ public class MonopolyGame extends JFrame {
     private JButton btnPayRent;
     private JButton btnRoll;
     private JButton btnNext;
+    private Dice dice;
 
     public void updateDisplayText(String text) {
         displayText.setText(text);
@@ -62,30 +63,53 @@ public class MonopolyGame extends JFrame {
         // Set the preferred size of the displayText field
         displayText.setPreferredSize(new Dimension(100, 150));
         displayProp.setPreferredSize(new Dimension(100, 300));
+
+        dice = new Dice();
         btnRoll.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // implement logic
+                // Simulate dice roll
+                int diceRoll = dice.roll();
+                updateDisplayText("Dice rolled: " + diceRoll);
+
+                // Add your additional logic based on the dice roll
             }
         });
-        btnNext.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // implement logic
-            }
-        });
-        btnPayRent.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // implement logic
-            }
-        });
-        btnBuy.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // implement logic
-            }
-        });
+
+//        btnNext.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                // Switch to the next player
+//                currentPlayerIndex = (currentPlayerIndex + 1) % 2;
+//                updateDisplayText("Next player's turn: " + (currentPlayerIndex + 1));
+//
+//                // Add any additional logic you need when switching players
+//            }
+//        });
+//
+//        btnPayRent.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                // Implement logic for paying rent
+//                // Example: deduct rent amount from the current player's money
+//                int rentAmount = 50; // Replace with the actual rent amount
+//                Player currentPlayer = (currentPlayerIndex == 0) ? player1 : player2;
+//                currentPlayer.removeFromMoney(rentAmount);
+//                updateDisplayText(currentPlayer.getName() + " paid rent: $" + rentAmount);
+//            }
+//        });
+//
+//        btnBuy.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                // Implement logic for property purchase
+//                // Example: deduct property cost from the current player's money
+//                int propertyCost = 100; // Replace with the actual property cost
+//                Player currentPlayer = (currentPlayerIndex == 0) ? player1 : player2;
+//                currentPlayer.removeFromMoney(propertyCost);
+//                updateDisplayText(currentPlayer.getName() + " bought a property for: $" + propertyCost);
+//            }
+//        });
     }
 
 
