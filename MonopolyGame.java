@@ -1,9 +1,44 @@
 import javax.swing.*;
+import java.awt.*;
 import java.util.Scanner;
 
 public class MonopolyGame extends JFrame {
+    private JPanel mainPanel;
+    private JLabel backgroundImageLabel;
 
     public static void main(String[] args) {
+        MonopolyGame frame = new MonopolyGame();
+        // Set up the main frame
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setContentPane(frame.mainPanel);
+        frame.setSize(1440, 1080);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        // Initialize game variables and start the game
+        startGame();
+    }
+    public MonopolyGame() {
+        // Load the background image
+        ImageIcon backgroundImageIcon = new ImageIcon("monopoly_original.jpg");
+        Image backgroundImage = backgroundImageIcon.getImage().getScaledInstance(1440, 900, Image.SCALE_DEFAULT);
+        backgroundImageIcon = new ImageIcon(backgroundImage);
+
+        // Set up the layout
+        GroupLayout layout = new GroupLayout(mainPanel);
+        mainPanel.setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(backgroundImageLabel, GroupLayout.DEFAULT_SIZE, 1440, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(backgroundImageLabel, GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+        );
+    }
+
+    private static void startGame() {
         // Create players and board spaces
         Player player1 = new Player("Player 1");
         Player player2 = new Player("Player 2");
@@ -63,9 +98,9 @@ public class MonopolyGame extends JFrame {
 //                    // Already handled when passing Go
 //                    break;
                 case 2: // Mediterranean Avenue
-                    try{
+                    try {
                         Handle.handleStreetProperty(currentPlayer, mediterraneanAve);
-                    } catch(Exception e) {
+                    } catch (Exception e) {
                         System.out.println("Exception occurred on Mediterranean Avenue: " + e.getMessage());
                     }
                     break;
@@ -190,13 +225,13 @@ public class MonopolyGame extends JFrame {
                     Handle.handleStreetProperty(currentPlayer, parkPlace);
                     break;
                 case 39: // Luxury Tax
-                    LuxuryTax luxuryTax = new LuxuryTax("Luxury Tax", 100);
+                    ChanceCard.LuxuryTax luxuryTax = new ChanceCard.LuxuryTax("Luxury Tax", 100);
                     luxuryTax.collectLuxuryTax(currentPlayer);
                     break;
-                case 40: // Boardwalk //
+                case 0: // Boardwalk //
                     Handle.handleStreetProperty(currentPlayer, boardWalk);
                     break;
-            // CASE 40 IS UNREACHABLE == ILISAN UG "case 0:" NEED FIX!
+                // CASE 40 IS UNREACHABLE == ILISAN UG "case 0:" NEED FIX!
 //                currentPlayer.getPosition() % 40 range from 0 to 39, not including 40. Therefore,
 //                    the case 40: is unreachable because the maximum value it can take is 39.
 //                To fix this issue, you can remove the case 40: and handle the case when
@@ -223,8 +258,6 @@ public class MonopolyGame extends JFrame {
                 gameIsRunning = false;
             }
         }
-
-
         // Close the scanner
         scanner.close();
     }
