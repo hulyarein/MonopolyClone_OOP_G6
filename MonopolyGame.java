@@ -71,7 +71,7 @@ public class MonopolyGame extends JFrame {
                 // Simulate dice roll
                 int diceRoll = dice.roll();
                 updateDisplayText("Dice rolled: " + diceRoll);
-
+                
                 // Add your additional logic based on the dice roll
             }
         });
