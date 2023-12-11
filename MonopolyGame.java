@@ -303,9 +303,10 @@ public class MonopolyGame extends JFrame {
             currentPlayerIndex = (currentPlayerIndex + 1) % 2;
 
             // Ask for user input to continue the game
-            String gameInfo = "Press Enter to continue or type 'quit' to end the game:";
-            System.out.println(gameInfo);
-            updateDisplayText(gameInfo);
+//            String gameInfo = "Press Enter to continue or type 'quit' to end the game:";
+//            System.out.println(gameInfo);
+//            updateDisplayText(gameInfo);
+            System.out.println("Press Enter to continue or type 'quit' to end the game:");
             String input = scanner.nextLine().toLowerCase();
             if (input.equals("quit")) {
                 gameIsRunning = false;
