@@ -73,4 +73,19 @@ public class ChanceCard extends Card {
     private void repairProperties(Player player){
        // int houseCount = player.gett;
     }
+
+    public static class LuxuryTax {
+        private String name;
+        private int taxAmount;
+
+        public LuxuryTax(String name, int taxAmount) {
+            this.name = name;
+            this.taxAmount = taxAmount;
+        }
+
+        public void collectLuxuryTax(Player player) {
+            player.pay(taxAmount);
+            System.out.println(player.getName() + " paid $" + taxAmount + " for luxury tax at " + name);
+        }
+    }
 }
