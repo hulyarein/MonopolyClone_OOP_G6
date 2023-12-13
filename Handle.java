@@ -3,27 +3,33 @@ import java.util.Scanner;
 public interface Handle {
     Scanner scanner = new Scanner(System.in);
 
-    static void handleStreetProperty(Player currentPlayer, StreetProperty streetProperty) {
+    static String handleStreetProperty(Player currentPlayer, StreetProperty streetProperty) {
         if (!streetProperty.isOwned()) {
             // The property is not owned, ask the player if they want to buy it
-            System.out.println("Do you want to buy " + streetProperty.getName() + " for $" + streetProperty.getPrice() + "? (yes/no)");
-            String buyDecision = scanner.nextLine().toLowerCase();
+            return "Do you want to buy " + streetProperty.getName() + " for $" + streetProperty.getPrice() + "? (yes/no)";
 
-            if (buyDecision.equals("yes")) {
-                // Player wants to buy the property
-                if (currentPlayer.canAfford(streetProperty.getPrice())) {
-                    currentPlayer.pay(streetProperty.getPrice());
-                    streetProperty.setOwner(currentPlayer);
-                    System.out.println(currentPlayer.getName() + " bought " + streetProperty.getName() + " for $" + streetProperty.getPrice());
-                } else {
-                    System.out.println(currentPlayer.getName() + " cannot afford " + streetProperty.getName());
-                    // Implement additional logic, e.g., bankrupt the player
-                }
-            }
         } else {
             // The property is owned, collect rent from the player
             streetProperty.collectRent(currentPlayer);
+            return "This property is owned";
         }
+    }
+
+    static String BuyProperty (String BuyDecision,Player currentPlayer, StreetProperty streetProperty) {
+        String buyDecision = scanner.nextLine().toLowerCase();
+        if (buyDecision.equals("yes")) {
+            // Player wants to buy the property
+            if (currentPlayer.canAfford(streetProperty.getPrice())) {
+                currentPlayer.pay(streetProperty.getPrice());
+                streetProperty.setOwner(currentPlayer);
+                return currentPlayer.getName() + " bought " + streetProperty.getName() + " for $" + streetProperty.getPrice();
+            } else {
+                return currentPlayer.getName() + " cannot afford " + streetProperty.getName();
+                // Implement additional logic, e.g., bankrupt the player
+            }
+        }
+        return currentPlayer.getName() + " decided to not buy";
+
     }
 
     static void handleUtilityProperty(Player currentPlayer, String utilityName, int utilityPrice) {
